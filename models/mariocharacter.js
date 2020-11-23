@@ -13,4 +13,4 @@ const MarioCharacter = mongoose.model("mariocharacter", MarioCharacterScheme);
 //Note: Only characters based on the mariocharcter module will be stored in the mariocharacter collection
 
 // Finally export the module
-module.export = MarioCharacter;
+module.exports = MarioCharacter;
