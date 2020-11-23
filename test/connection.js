@@ -1,13 +1,20 @@
 const mongoose = require("mongoose");
 
-// Connect to "testaroo" DB on mongoDB local server
-mongoose.connect("mongodb://localhost/testaroo");
+// Replace mongoose deprecated Promise with ES6 Promises
+mongoose.Promise = global.Promise;
 
-// Listen to "open" event once and lunch the callback
-mongoose.connection
-  .once("open", function () {
-    console.log("Connection has been made! Now make fireworks");
-  })
-  .on("error", function (error) {
-    console.log("Connection error", error);
-  });
+// Connect to DB before running tests
+before(function (done) {
+  // Connect to "testaroo" DB on mongoDB local server
+  mongoose.connect("mongodb://localhost/testaroo");
+
+  // Listen to "open" event once and lunch the callback
+  mongoose.connection
+    .once("open", function () {
+      console.log("Connection has been made! Now make fireworks");
+      done(); // Call done() once connection has been established
+    })
+    .on("error", function (error) {
+      console.log("Connection error", error);
+    });
+});

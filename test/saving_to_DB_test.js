@@ -1,4 +1,3 @@
-const mocha = require("mocha");
 const assert = require("assert");
 const MarioCharacter = require("../models/mariocharacter");
 
