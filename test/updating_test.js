@@ -7,6 +7,7 @@ describe("Updating records", function () {
     // create an new instanse of MariCharacter
     character = new MarioCharacter({
       name: "Mario",
+      weight: 50,
     });
 
     character.save().then(function () {
@@ -27,4 +28,15 @@ describe("Updating records", function () {
       }
     );
   });
+
+  //   it("Increments weight by 1", function (done) {
+  //     // Find by name and update
+  //     // $inc means increment it takes an object with the property to increment and the amout to increment it by
+  //     MarioCharacter.update({}, { $inc: { weight: 1 } }).then(function () {
+  //       MarioCharacter.findOne({ name: "Mario" }).then(function (record) {
+  //         assert(record.weight === 51);
+  //         done();
+  //       });
+  //     });
+  //   });
 });
