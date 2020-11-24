@@ -2,9 +2,10 @@ const assert = require("assert");
 const MarioCharacter = require("../models/mariocharacter");
 
 describe("finding records", function () {
+  var character;
   beforeEach(function (done) {
     // create an new instanse of MariCharacter
-    var character = new MarioCharacter({
+    character = new MarioCharacter({
       name: "Mario",
     });
 
@@ -12,12 +13,23 @@ describe("finding records", function () {
       done();
     });
   });
-  it("finds one record in DB", function (done) {
+
+  it("finds one record by name in DB", function (done) {
     MarioCharacter.findOne({
       name: "Mario",
     }).then(function (result) {
       //   console.log("result", result);
       assert(result.name === "Mario");
+      done();
+    });
+  });
+  it("finds one record by ObjectId in DB", function (done) {
+    MarioCharacter.findOne({
+      _id: character._id,
+    }).then(function (result) {
+      //   console.log("result", result);
+      // assert(result._id === character._id); //NOTE, this will fail becaude the _id is not a string but an Object use .toString() as below
+      assert(result._id.toString() === character._id.toString());
       done();
     });
   });
