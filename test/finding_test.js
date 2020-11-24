@@ -1,7 +1,7 @@
 const assert = require("assert");
 const MarioCharacter = require("../models/mariocharacter");
 
-describe("finding records", function () {
+describe("Finding records", function () {
   var character;
   beforeEach(function (done) {
     // create an new instanse of MariCharacter
@@ -14,7 +14,7 @@ describe("finding records", function () {
     });
   });
 
-  it("finds one record by name in DB", function (done) {
+  it("Finds one record by name in DB", function (done) {
     MarioCharacter.findOne({
       name: "Mario",
     }).then(function (result) {
@@ -23,7 +23,7 @@ describe("finding records", function () {
       done();
     });
   });
-  it("finds one record by ObjectId in DB", function (done) {
+  it("Finds one record by ObjectId in DB", function (done) {
     MarioCharacter.findOne({
       _id: character._id,
     }).then(function (result) {
