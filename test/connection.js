@@ -18,3 +18,12 @@ before(function (done) {
       console.log("Connection error", error);
     });
 });
+
+// Drop the characters collection before each test
+beforeEach(function (done) {
+  // Drop the cllection
+  mongoose.connection.collections.mariocharacters.drop(function () {
+    // Once the collection dropped the test can run
+    done();
+  });
+});
